@@ -36,34 +36,26 @@ function askQuestion() {
   }
 }
 
-function gradeQuiz() {
+function gradeQuiz(candidateAnswers) {
   
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   console.log('Here are your results: ');
-  let grade;
-  let results; 
-  grade = 0; 
-  results = (grade / correctAnswers) * 100
-  let status = '';
 
-  for (let i = 0; i < questions.length; i++) {
-  if(candidateAnswers[i].toLowerCase === correctAnswers[i.toLowerCase]){
-      console.log('Your Answer: ' + candidateAnswers[i])
-      console.log('Correct Answer: ' + correctAnswers[i])
-          grade++;
-    }else {
-         grade--;
-    }
-    
-  }
-  if (results >= 80) {
-  status = 'Passed'
+
+  let grade = (correctAnswers.length / questions.length) * 100
+let status = '';
+  
+  if (grade >= 80) {
+    status = 'Passed'
 } else {
   status = 'Failed'
-  }
-  console.log('>>> Overall Grade: ' + `${grade}`);
-  console.log('>>> Status: '+ `${status}`);
-  return grade;
+}
+
+console.log(`>>> Overall Grade: ${grade} % (${correctAnswers.length} of 5 responses correct) <<< \n>>> Status: ${status}<<<`);
+
+
+
+return grade;
 
 }
 
